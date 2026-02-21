@@ -4,6 +4,11 @@
 
 📋 **상세 프로젝트 요구사항은 `@/docs/PRD.md` 참조**
 
+## 📂 Project Context
+
+* PRD 문서: @docs/PRD.md
+* 개발 로드맵: @docs/ROADMAP.md
+
 ## 🛠️ 핵심 기술 스택
 
 - **Framework**: Next.js 15.5.3 (App Router + Turbopack)
