@@ -37,27 +37,27 @@ Notion CMS 기반 개인 독서 블로그 - 독서노트를 웹에 자동 발행
 
 ## 개발 단계
 
-### Phase 1: 애플리케이션 골격 구축
+### Phase 1: 애플리케이션 골격 구축 ✅
 
 > 전체 라우트 구조, 빈 페이지, 공통 레이아웃 골격, 기본 타입 정의를 완성합니다.
 > 이 Phase가 끝나면 모든 페이지 경로가 존재하고, 빈 화면이라도 이동이 가능합니다.
 
-#### P0 - Task 001: 프로젝트 라우팅 구조 및 공통 레이아웃 골격 구축
+#### P0 - Task 001: 프로젝트 라우팅 구조 및 공통 레이아웃 골격 구축 ✅
 
-- `src/app/page.tsx` 메인 페이지(홈) 라우트 골격 작성 (빈 페이지 + 제목만 표시)
-- `src/app/books/[id]/page.tsx` 독서노트 상세 페이지 동적 라우트 생성
-- `src/components/layout/header.tsx` 헤더 컴포넌트 골격 (사이트 로고 "독서일기" + 홈 링크)
-- `src/components/layout/footer.tsx` 푸터 컴포넌트 골격 (저작권 표기)
-- `src/app/layout.tsx` 루트 레이아웃에 Header/Footer 통합 및 공통 메타데이터 설정
-- `src/app/not-found.tsx` 404 페이지 생성
+- ✅ `src/app/page.tsx` 메인 페이지(홈) 라우트 골격 작성 (빈 페이지 + 제목만 표시)
+- ✅ `src/app/books/[id]/page.tsx` 독서노트 상세 페이지 동적 라우트 생성
+- ✅ `src/components/layout/header.tsx` 헤더 컴포넌트 골격 (사이트 로고 "독서일기" + 홈 링크)
+- ✅ `src/components/layout/footer.tsx` 푸터 컴포넌트 골격 (저작권 표기)
+- ✅ `src/app/layout.tsx` 루트 레이아웃에 Header/Footer 통합 및 공통 메타데이터 설정
+- ✅ `src/app/not-found.tsx` 404 페이지 생성
 
-#### P0 - Task 002: TypeScript 타입 정의 및 데이터 모델 설계
+#### P0 - Task 002: TypeScript 타입 정의 및 데이터 모델 설계 ✅
 
-- `src/lib/types/book.ts` Book 타입 정의 (id, title, status, categories, rating, author, coverImage, summary, publishedDate)
-- `src/lib/types/notion.ts` NotionBlock 타입 정의 (id, type, content, children) 및 Notion API 응답 매핑 타입
-- `src/lib/types/index.ts` 타입 배럴 파일 생성 (모든 타입 re-export)
-- `src/lib/constants.ts` 상수 정의 (카테고리 목록, 별점 옵션, 사이트 메타데이터 등)
-- `src/lib/dummy-data.ts` 개발용 더미 도서 데이터 5~8건 생성 (모든 필드 포함)
+- ✅ `src/lib/types/book.ts` Book 타입 정의 (id, title, status, categories, rating, author, coverImage, summary, publishedDate)
+- ✅ `src/lib/types/notion.ts` NotionBlock 타입 정의 (id, type, content, children) 및 Notion API 응답 매핑 타입
+- ✅ `src/lib/types/index.ts` 타입 배럴 파일 생성 (모든 타입 re-export)
+- ✅ `src/lib/constants.ts` 상수 정의 (카테고리 목록, 별점 옵션, 사이트 메타데이터 등)
+- ✅ `src/lib/dummy-data.ts` 개발용 더미 도서 데이터 5~8건 생성 (모든 필드 포함)
 
 ---
 
@@ -162,14 +162,14 @@ Notion CMS 기반 개인 독서 블로그 - 독서노트를 웹에 자동 발행
 
 ## 기능-Task 매핑표
 
-| 기능 ID | 기능명 | 관련 Task |
-|---------|--------|-----------|
-| F001 | Notion DB 연동 및 목록 조회 | Task 002, Task 004, Task 006 |
-| F002 | 도서 카드 그리드 표시 | Task 003, Task 004 |
-| F003 | 장르 및 별점 필터링 | Task 004 |
-| F004 | 키워드 검색 | Task 004 |
-| F005 | 독서노트 본문 렌더링 | Task 005, Task 007 |
-| F006 | 도서 메타데이터 표시 | Task 005 |
-| F007 | 이전/다음 글 네비게이션 | Task 005 |
-| F008 | 노션 이미지 핸들링 | Task 008 |
-| F009 | SEO 및 OG 태그 자동 생성 | Task 009 |
+| 기능 ID | 기능명                      | 관련 Task                    |
+| ------- | --------------------------- | ---------------------------- |
+| F001    | Notion DB 연동 및 목록 조회 | Task 002, Task 004, Task 006 |
+| F002    | 도서 카드 그리드 표시       | Task 003, Task 004           |
+| F003    | 장르 및 별점 필터링         | Task 004                     |
+| F004    | 키워드 검색                 | Task 004                     |
+| F005    | 독서노트 본문 렌더링        | Task 005, Task 007           |
+| F006    | 도서 메타데이터 표시        | Task 005                     |
+| F007    | 이전/다음 글 네비게이션     | Task 005                     |
+| F008    | 노션 이미지 핸들링          | Task 008                     |
+| F009    | SEO 및 OG 태그 자동 생성    | Task 009                     |
