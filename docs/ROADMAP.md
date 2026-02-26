@@ -141,12 +141,12 @@ Notion CMS 기반 개인 독서 블로그 - 독서노트를 웹에 자동 발행
 
 ---
 
-### Phase 4: 고급 기능 및 최적화
+### Phase 4: 고급 기능 및 최적화 ✅
 
 > 성능 최적화, 캐싱 전략을 적용하고 Vercel에 배포합니다.
 > 이 Phase가 끝나면 프로덕션 환경에서 안정적으로 서비스가 운영됩니다.
 
-#### P1 - Task 010: 성능 최적화 (ISR, 캐싱) 및 Vercel 배포
+#### P1 - Task 010: 성능 최적화 (ISR, 캐싱) 및 Vercel 배포 ✅
 
 - ✅ 메인 페이지 ISR 적용 (revalidate 설정으로 주기적 데이터 갱신) [F001]
 - ✅ 독서노트 상세 페이지 ISR 적용 + generateStaticParams로 빌드 시 사전 생성 [F005]
@@ -154,8 +154,8 @@ Notion CMS 기반 개인 독서 블로그 - 독서노트를 웹에 자동 발행
 - ✅ `src/app/loading.tsx` 메인 페이지 스켈레톤 로딩 UI 적용
 - ✅ `src/app/books/[id]/loading.tsx` 상세 페이지 스켈레톤 로딩 UI 적용
 - ✅ `src/app/error.tsx` 전역 에러 바운더리 구현
-- Vercel 프로젝트 생성 및 환경 변수 설정 (NOTION_API_KEY, NOTION_DATABASE_ID)
-- Vercel 배포 및 프로덕션 환경 동작 확인
+- ✅ Vercel 프로젝트 생성 및 환경 변수 설정 (NOTION_API_KEY, NOTION_DATABASE_ID)
+- ✅ Vercel 배포 및 프로덕션 환경 동작 확인
 
 ---
 
