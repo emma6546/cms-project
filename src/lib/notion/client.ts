@@ -4,5 +4,5 @@ import { env } from '@/lib/env'
 
 // 모듈 레벨 싱글톤 - 서버 컴포넌트/라우트 핸들러에서 재사용
 export const notionClient = new Client({
-    auth: env.NOTION_API_KEY,
+  auth: env.NOTION_API_KEY,
 })

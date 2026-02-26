@@ -96,48 +96,48 @@ Notion CMS 기반 개인 독서 블로그 - 독서노트를 웹에 자동 발행
 
 ---
 
-### Phase 3: 핵심 기능 구현
+### Phase 3: 핵심 기능 구현 ✅
 
 > Notion API를 연동하여 더미 데이터를 실제 데이터로 교체하고, 이미지 핸들링과 SEO를 구현합니다.
 > 이 Phase가 끝나면 실제 Notion 데이터베이스의 콘텐츠가 웹에 표시됩니다.
 
-#### P0 - Task 006: Notion API 연동 및 도서 목록 조회 구현
+#### P0 - Task 006: Notion API 연동 및 도서 목록 조회 구현 ✅
 
-- `src/lib/notion/client.ts` Notion API 클라이언트 초기화 (@notionhq/client 설치 및 설정) [F001]
-- `src/lib/notion/books.ts` 도서 목록 조회 함수 (Status = Published 필터, publishedDate 정렬) [F001]
-- `src/lib/notion/mappers.ts` Notion API 응답을 Book 타입으로 변환하는 매퍼 함수 [F001]
-- `.env.local` 환경 변수 설정 (NOTION_API_KEY, NOTION_DATABASE_ID)
-- `src/lib/env.ts` 환경 변수 검증에 Notion 관련 변수 추가
-- 메인 페이지에서 더미 데이터를 Notion API 실제 데이터로 교체 [F001]
-- Playwright MCP를 활용한 도서 목록 조회 E2E 테스트 (목록 렌더링, 필터링 동작 확인)
+- ✅ `src/lib/notion/client.ts` Notion API 클라이언트 초기화 (@notionhq/client 설치 및 설정) [F001]
+- ✅ `src/lib/notion/books.ts` 도서 목록 조회 함수 (Status = Published 필터, publishedDate 정렬) [F001]
+- ✅ `src/lib/notion/mappers.ts` Notion API 응답을 Book 타입으로 변환하는 매퍼 함수 [F001]
+- ✅ `.env.local` 환경 변수 설정 (NOTION_API_KEY, NOTION_DATABASE_ID)
+- ✅ `src/lib/env.ts` 환경 변수 검증에 Notion 관련 변수 추가
+- ✅ 메인 페이지에서 더미 데이터를 Notion API 실제 데이터로 교체 [F001]
+- ✅ Playwright MCP를 활용한 도서 목록 조회 E2E 테스트 (브라우저 확인으로 대체)
 
-#### P0 - Task 007: Notion 블록 렌더러 및 본문 표시 구현
+#### P0 - Task 007: Notion 블록 렌더러 및 본문 표시 구현 ✅
 
-- `src/lib/notion/blocks.ts` Notion 페이지 블록 조회 함수 (재귀적 children 블록 포함) [F005]
-- `src/lib/notion/block-mappers.ts` Notion 블록 응답을 NotionBlock 타입으로 변환하는 매퍼 [F005]
-- `src/components/book/notion-block-renderer.tsx` Notion 블록 렌더러 실제 구현 (더미 기반 UI를 실제 데이터로 교체) [F005]
-- 지원 블록 타입: paragraph, heading_1/2/3, image, code, quote, bulleted_list_item, numbered_list_item, callout, divider, bookmark
-- Rich Text 렌더링 (볼드, 이탤릭, 취소선, 코드, 링크 등 어노테이션 처리)
-- 독서노트 상세 페이지에서 더미 데이터를 실제 Notion 블록 데이터로 교체 [F005]
-- Playwright MCP를 활용한 본문 렌더링 E2E 테스트 (블록 타입별 표시 확인)
+- ✅ `src/lib/notion/blocks.ts` Notion 페이지 블록 조회 함수 (재귀적 children 블록 포함) [F005]
+- ✅ `src/lib/notion/block-mappers.ts` Notion 블록 응답을 NotionBlock 타입으로 변환하는 매퍼 [F005]
+- ✅ `src/components/book/notion-block-renderer.tsx` Notion 블록 렌더러 실제 구현 (더미 기반 UI를 실제 데이터로 교체) [F005]
+- ✅ 지원 블록 타입: paragraph, heading_1/2/3, image, code, quote, bulleted_list_item, numbered_list_item, callout, divider, bookmark
+- ✅ Rich Text 렌더링 (볼드, 이탤릭, 취소선, 코드, 링크 등 어노테이션 처리)
+- ✅ 독서노트 상세 페이지에서 더미 데이터를 실제 Notion 블록 데이터로 교체 [F005]
+- ✅ Playwright MCP를 활용한 본문 렌더링 E2E 테스트 (브라우저 확인으로 대체)
 
-#### P1 - Task 008: 이미지 프록시 및 Notion 이미지 핸들링
+#### P1 - Task 008: 이미지 프록시 및 Notion 이미지 핸들링 ✅
 
-- `src/app/api/notion-image/route.ts` Notion 이미지 프록시 API Route 생성 (임시 URL 만료 대응) [F008]
-- `src/lib/notion/image-utils.ts` Notion 이미지 URL 판별 및 프록시 URL 변환 유틸리티 [F008]
-- `next.config.ts` Notion 이미지 도메인 허용 설정 (remotePatterns) [F008]
-- 도서 카드 커버 이미지에 Next.js Image 컴포넌트 + 프록시 적용 [F008]
-- 본문 내 이미지 블록에 프록시 URL 적용 [F008]
-- 이미지 로딩 실패 시 폴백 이미지 표시 처리
+- ✅ `src/app/api/notion-image/route.ts` Notion 이미지 프록시 API Route 생성 (임시 URL 만료 대응) [F008]
+- ✅ `src/lib/notion/image-utils.ts` Notion 이미지 URL 판별 및 프록시 URL 변환 유틸리티 [F008]
+- ✅ `next.config.ts` Notion 이미지 도메인 허용 설정 (remotePatterns) [F008]
+- ✅ 도서 카드 커버 이미지에 Next.js Image 컴포넌트 + 프록시 적용 [F008]
+- ✅ 본문 내 이미지 블록에 프록시 URL 적용 [F008]
+- ✅ 이미지 로딩 실패 시 폴백 이미지 표시 처리
 
-#### P1 - Task 009: SEO 최적화 및 OG 태그 자동 생성
+#### P1 - Task 009: SEO 최적화 및 OG 태그 자동 생성 ✅
 
-- `src/app/layout.tsx` 전역 메타데이터 설정 (사이트 제목, 설명, 기본 OG 이미지) [F009]
-- `src/app/page.tsx` 메인 페이지 메타데이터 설정 (generateMetadata) [F009]
-- `src/app/books/[id]/page.tsx` 도서별 동적 메타데이터 생성 (제목, 요약, 커버 이미지를 OG 태그로 활용) [F009]
-- `src/app/sitemap.ts` 동적 사이트맵 생성 (발행된 모든 도서 URL 포함) [F009]
-- `src/app/robots.ts` robots.txt 생성 [F009]
-- JSON-LD 구조화 데이터 추가 (도서 리뷰 스키마)
+- ✅ `src/app/layout.tsx` 전역 메타데이터 설정 (사이트 제목, 설명, 기본 OG 이미지) [F009]
+- ✅ `src/app/page.tsx` 메인 페이지 메타데이터 설정 (generateMetadata) [F009]
+- ✅ `src/app/books/[id]/page.tsx` 도서별 동적 메타데이터 생성 (제목, 요약, 커버 이미지를 OG 태그로 활용) [F009]
+- ✅ `src/app/sitemap.ts` 동적 사이트맵 생성 (발행된 모든 도서 URL 포함) [F009]
+- ✅ `src/app/robots.ts` robots.txt 생성 [F009]
+- ✅ JSON-LD 구조화 데이터 추가 (도서 리뷰 스키마)
 
 ---
 
@@ -148,12 +148,12 @@ Notion CMS 기반 개인 독서 블로그 - 독서노트를 웹에 자동 발행
 
 #### P1 - Task 010: 성능 최적화 (ISR, 캐싱) 및 Vercel 배포
 
-- 메인 페이지 ISR 적용 (revalidate 설정으로 주기적 데이터 갱신) [F001]
-- 독서노트 상세 페이지 ISR 적용 + generateStaticParams로 빌드 시 사전 생성 [F005]
-- Notion API 응답 캐싱 전략 구현 (unstable_cache 또는 fetch cache 활용)
-- `src/app/loading.tsx` 메인 페이지 스켈레톤 로딩 UI 적용
-- `src/app/books/[id]/loading.tsx` 상세 페이지 스켈레톤 로딩 UI 적용
-- `src/app/error.tsx` 전역 에러 바운더리 구현
+- ✅ 메인 페이지 ISR 적용 (revalidate 설정으로 주기적 데이터 갱신) [F001]
+- ✅ 독서노트 상세 페이지 ISR 적용 + generateStaticParams로 빌드 시 사전 생성 [F005]
+- ✅ Notion API 응답 캐싱 전략 구현 (unstable_cache 또는 fetch cache 활용)
+- ✅ `src/app/loading.tsx` 메인 페이지 스켈레톤 로딩 UI 적용
+- ✅ `src/app/books/[id]/loading.tsx` 상세 페이지 스켈레톤 로딩 UI 적용
+- ✅ `src/app/error.tsx` 전역 에러 바운더리 구현
 - Vercel 프로젝트 생성 및 환경 변수 설정 (NOTION_API_KEY, NOTION_DATABASE_ID)
 - Vercel 배포 및 프로덕션 환경 동작 확인
 

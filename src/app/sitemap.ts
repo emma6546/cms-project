@@ -4,24 +4,24 @@ import { getPublishedBooks } from '@/lib/notion/books'
 import { SITE_METADATA } from '@/lib/constants'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const books = await getPublishedBooks()
+  const books = await getPublishedBooks()
 
-    const bookUrls: MetadataRoute.Sitemap = books.map(book => ({
-        url: `${SITE_METADATA.url}/books/${book.id}`,
-        lastModified: book.publishedDate
-            ? new Date(book.publishedDate)
-            : new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.8,
-    }))
+  const bookUrls: MetadataRoute.Sitemap = books.map(book => ({
+    url: `${SITE_METADATA.url}/books/${book.id}`,
+    lastModified: book.publishedDate
+      ? new Date(book.publishedDate)
+      : new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }))
 
-    return [
-        {
-            url: SITE_METADATA.url,
-            lastModified: new Date(),
-            changeFrequency: 'daily',
-            priority: 1,
-        },
-        ...bookUrls,
-    ]
+  return [
+    {
+      url: SITE_METADATA.url,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1,
+    },
+    ...bookUrls,
+  ]
 }

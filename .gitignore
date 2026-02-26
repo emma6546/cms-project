@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/.playwright-mcp/
 /out/
 
 # production
@@ -42,3 +43,6 @@ next-env.d.ts
 
 # claude code
 .claude/settings.local.json
+
+# 기타 폴더
+/shrimp_data/
