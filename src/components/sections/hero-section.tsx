@@ -1,6 +1,7 @@
 // Hero 섹션 컴포넌트 - 서비스 소개 문구 및 키워드 검색 바 [F004]
 import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
+import { SITE_METADATA } from '@/lib/constants'
 
 interface HeroSectionProps {
   // 현재 검색어 상태
@@ -28,7 +29,7 @@ export function HeroSection({ searchQuery, onSearchChange }: HeroSectionProps) {
         <div className="mx-auto max-w-2xl text-center">
           {/* 서비스 제목 */}
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            독서일기
+            {SITE_METADATA.name}
           </h1>
 
           {/* 서비스 부제 */}

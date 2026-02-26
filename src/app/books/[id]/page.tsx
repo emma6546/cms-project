@@ -84,7 +84,7 @@ export default async function BookDetailPage({
     '@type': 'Review',
     name: book.title,
     description: book.summary,
-    author: { '@type': 'Person', name: '독서일기' },
+    author: { '@type': 'Person', name: SITE_METADATA.name },
     itemReviewed: {
       '@type': 'Book',
       name: book.title,
