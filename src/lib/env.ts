@@ -5,8 +5,10 @@ const envSchema = z.object({
   NODE_ENV: z
     .enum(['development', 'production', 'test'])
     .default('development'),
-  NOTION_API_KEY: z.string().optional(),
-  NOTION_DATABASE_ID: z.string().optional(),
+  NOTION_API_KEY: z.string().min(1, 'NOTION_API_KEY가 설정되지 않았습니다'),
+  NOTION_DATABASE_ID: z
+    .string()
+    .min(1, 'NOTION_DATABASE_ID가 설정되지 않았습니다'),
   VERCEL_URL: z.string().optional(),
   NEXT_PUBLIC_APP_URL: z.string().url().optional(),
 })
