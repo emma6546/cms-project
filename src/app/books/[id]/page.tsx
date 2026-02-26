@@ -1,19 +1,19 @@
 // 독서노트 상세 페이지 - 동적 라우트 [id] [F005, F006, F007]
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import { ChevronLeft } from 'lucide-react'
 import { BookDetailHeader } from '@/components/book/book-detail-header'
 import { NotionBlockRenderer } from '@/components/book/notion-block-renderer'
 import { PostNavigation } from '@/components/navigation/post-navigation'
+import { SITE_METADATA } from '@/lib/constants'
+import { getPageBlocks } from '@/lib/notion/blocks'
 import {
-  getBookById,
   getAdjacentBooks,
+  getBookById,
   getPublishedBooks,
 } from '@/lib/notion/books'
-import { getPageBlocks } from '@/lib/notion/blocks'
-import { toProxyUrl } from '@/lib/notion/image-utils'
-import { SITE_METADATA } from '@/lib/constants'
+import { toAbsoluteProxyUrl } from '@/lib/notion/image-utils'
+import { ChevronLeft } from 'lucide-react'
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 // ISR: 1시간마다 페이지 재생성, 미리 생성되지 않은 경로도 허용
 export const revalidate = 3600
@@ -33,11 +33,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params
   const book = await getBookById(id)
-  if (!book) return { title: '독서일기' }
+  if (!book) return { title: SITE_METADATA.name }
 
   const pageUrl = `${SITE_METADATA.url}/books/${id}`
   const ogImage = book.coverImage
-    ? (toProxyUrl(book.coverImage) ?? book.coverImage)
+    ? (toAbsoluteProxyUrl(book.coverImage) ?? book.coverImage)
     : undefined
 
   return {

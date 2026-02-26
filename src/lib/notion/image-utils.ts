@@ -27,3 +27,16 @@ export function toProxyUrl(url: string | null): string | null {
   if (!isNotionImageUrl(url)) return url
   return `/api/notion-image?url=${encodeURIComponent(url)}`
 }
+
+// OG 태그용 절대 URL 변환 (SNS 공유 시 상대 경로는 인식되지 않음)
+export function toAbsoluteProxyUrl(url: string | null): string | null {
+  const proxyPath = toProxyUrl(url)
+  if (!proxyPath) return null
+  if (proxyPath.startsWith('http')) return proxyPath
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL ??
+    (process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000')
+  return `${baseUrl}${proxyPath}`
+}
