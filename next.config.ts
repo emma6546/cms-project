@@ -5,6 +5,21 @@ const nextConfig: NextConfig = {
   compress: true,
   images: {
     formats: ['image/webp', 'image/avif'],
+    // 더미 데이터 및 Notion 이미지 도메인 허용
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com',
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ['lucide-react'],

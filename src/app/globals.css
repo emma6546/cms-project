@@ -119,4 +119,8 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* 전역 컨테이너 최대 너비 - 모든 페이지에서 동일한 레이아웃 폭 적용 */
+  .container {
+    max-width: 72rem; /* 1152px */
+  }
 }

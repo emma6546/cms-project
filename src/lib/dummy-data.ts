@@ -1,6 +1,6 @@
 // 개발용 더미 도서 데이터 - Phase 2 UI 작업 시 실제 Notion API 대신 사용
 // Phase 3 Notion API 연동 완료 후 이 파일은 더 이상 사용하지 않습니다
-import type { Book } from '@/lib/types'
+import type { Book, NotionBlock } from '@/lib/types'
 
 export const DUMMY_BOOKS: Book[] = [
   {
@@ -118,3 +118,443 @@ export function getPublishedDummyBooks(): Book[] {
     }
   )
 }
+
+// 이전/다음 도서 조회 (publishedDate 기준 정렬 순서 기반)
+export function getAdjacentDummyBooks(id: string): {
+  prevBook: Book | null
+  nextBook: Book | null
+} {
+  const publishedBooks = getPublishedDummyBooks()
+  const currentIndex = publishedBooks.findIndex(book => book.id === id)
+
+  if (currentIndex === -1) {
+    return { prevBook: null, nextBook: null }
+  }
+
+  // 내림차순 정렬이므로: 인덱스가 작을수록 최신 글
+  // prevBook = 이전에 발행된 글 (인덱스 +1), nextBook = 이후에 발행된 글 (인덱스 -1)
+  return {
+    prevBook: publishedBooks[currentIndex + 1] ?? null,
+    nextBook: publishedBooks[currentIndex - 1] ?? null,
+  }
+}
+
+// 더미 Notion 블록 데이터 - 상세 페이지 UI 테스트용
+export const DUMMY_BLOCKS: NotionBlock[] = [
+  {
+    id: 'block-001',
+    type: 'heading_1',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text: '읽게 된 계기',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-002',
+    type: 'paragraph',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text:
+          '코드 리뷰를 받으면서 "이 코드는 왜 이렇게 작성했나요?"라는 질문을 자주 받았다. 내 코드가 나만 이해할 수 있다는 걸 그때 깨달았다. 그래서 ',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+      {
+        type: 'text',
+        plain_text: '클린 코드',
+        href: null,
+        annotations: {
+          bold: true,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+      {
+        type: 'text',
+        plain_text: '를 집어 들었다.',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-003',
+    type: 'heading_2',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text: '핵심 내용 정리',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-004',
+    type: 'callout',
+    rich_text: [],
+    callout: {
+      rich_text: [
+        {
+          type: 'text',
+          plain_text:
+            '나쁜 코드도 돌아간다. 하지만 코드가 너무 지저분하면 회사가 망할 수도 있다.',
+          href: null,
+          annotations: {
+            bold: false,
+            italic: true,
+            strikethrough: false,
+            underline: false,
+            code: false,
+            color: 'default',
+          },
+        },
+      ],
+      icon: { type: 'emoji', emoji: '💡' },
+      color: 'gray_background',
+    },
+    children: [],
+  },
+  {
+    id: 'block-005',
+    type: 'heading_3',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text: '의미 있는 이름',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-006',
+    type: 'bulleted_list_item',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text:
+          '의도를 분명히 밝혀라 - 변수명 하나로 코드의 목적을 전달하라',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-007',
+    type: 'bulleted_list_item',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text: '그릇된 정보를 피하라 - 약어나 모호한 이름을 사용하지 말라',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-008',
+    type: 'bulleted_list_item',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text:
+          '검색하기 쉬운 이름을 사용하라 - 단일 문자 변수명은 최소화하라',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-009',
+    type: 'heading_3',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text: '함수',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-010',
+    type: 'paragraph',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text:
+          '함수는 한 가지를 해야 한다. 그 한 가지를 잘 해야 한다. 그 한 가지만을 해야 한다. 좋은 함수는 ',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+      {
+        type: 'text',
+        plain_text: '작게',
+        href: null,
+        annotations: {
+          bold: true,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+      {
+        type: 'text',
+        plain_text: ' 만들어야 한다.',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-011',
+    type: 'code',
+    rich_text: [],
+    code: {
+      rich_text: [
+        {
+          type: 'text',
+          plain_text:
+            '// 나쁜 예시\nfunction processUserDataAndSendEmail(user) {\n  // 데이터 처리...\n  // 이메일 발송...\n}\n\n// 좋은 예시\nfunction processUserData(user) { ... }\nfunction sendWelcomeEmail(user) { ... }',
+          href: null,
+          annotations: {
+            bold: false,
+            italic: false,
+            strikethrough: false,
+            underline: false,
+            code: false,
+            color: 'default',
+          },
+        },
+      ],
+      language: 'javascript',
+      caption: [],
+    },
+    children: [],
+  },
+  {
+    id: 'block-012',
+    type: 'quote',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text:
+          '코드를 읽는 시간 대 코드를 짜는 시간 비율이 10 대 1을 훌쩍 넘는다. 새 코드를 짜면서 우리는 끊임없이 기존 코드를 읽는다.',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-013',
+    type: 'divider',
+    rich_text: [],
+    children: [],
+  },
+  {
+    id: 'block-014',
+    type: 'heading_2',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text: '총평',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-015',
+    type: 'paragraph',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text:
+          '이 책은 단순히 코딩 스타일 가이드가 아니다. 코드를 통해 동료와 소통하는 방법, 그리고 미래의 나에게 친절한 코드를 남기는 방법에 대한 책이다. 개발자라면 반드시 한 번은 읽어야 할 책.',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-016',
+    type: 'numbered_list_item',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text: '가독성: ★★★★★',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-017',
+    type: 'numbered_list_item',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text: '실용성: ★★★★★',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+  {
+    id: 'block-018',
+    type: 'numbered_list_item',
+    rich_text: [
+      {
+        type: 'text',
+        plain_text: '재독 가치: ★★★★☆',
+        href: null,
+        annotations: {
+          bold: false,
+          italic: false,
+          strikethrough: false,
+          underline: false,
+          code: false,
+          color: 'default',
+        },
+      },
+    ],
+    children: [],
+  },
+]
