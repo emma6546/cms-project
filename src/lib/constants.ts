@@ -19,7 +19,7 @@ export const CATEGORIES = [
   '인문',
   '경제',
   '소설',
-  '자기계발',
+  '자기개발',
   '과학',
   '역사',
 ] as const

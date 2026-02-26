@@ -1,7 +1,7 @@
 // Hero 섹션 컴포넌트 - 서비스 소개 문구 및 키워드 검색 바 [F004]
-import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { SITE_METADATA } from '@/lib/constants'
+import { Search } from 'lucide-react'
 
 interface HeroSectionProps {
   // 현재 검색어 상태
@@ -34,7 +34,7 @@ export function HeroSection({ searchQuery, onSearchChange }: HeroSectionProps) {
 
           {/* 서비스 부제 */}
           <p className="text-muted-foreground mt-4 text-lg sm:text-xl">
-            Notion으로 관리하는 나만의 독서 기록
+            Notion연동 페이지 테스트ㅋ
           </p>
 
           {/* 키워드 검색 바 */}
