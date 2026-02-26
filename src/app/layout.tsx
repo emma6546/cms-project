@@ -16,10 +16,31 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+import { SITE_METADATA } from '@/lib/constants'
+
 export const metadata: Metadata = {
-  title: '독서일기',
-  description:
-    'Notion을 CMS로 활용하여 독서노트를 웹에 자동 발행하는 개인 독서 블로그',
+  title: {
+    default: SITE_METADATA.name,
+    template: `%s | ${SITE_METADATA.name}`,
+  },
+  description: SITE_METADATA.description,
+  metadataBase: new URL(SITE_METADATA.url),
+  openGraph: {
+    type: 'website',
+    siteName: SITE_METADATA.name,
+    title: SITE_METADATA.name,
+    description: SITE_METADATA.description,
+    locale: 'ko_KR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_METADATA.name,
+    description: SITE_METADATA.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
