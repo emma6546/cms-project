@@ -7,6 +7,7 @@ import { StarRating } from '@/components/book/star-rating'
 import { CategoryBadge } from '@/components/book/category-badge'
 import type { Book } from '@/lib/types'
 import { cn } from '@/lib/utils'
+import { toProxyUrl } from '@/lib/notion/image-utils'
 
 interface BookCardProps {
   book: Book
@@ -31,7 +32,7 @@ export function BookCard({ book, className }: BookCardProps) {
         <div className="bg-muted relative aspect-[3/4] w-full overflow-hidden">
           {book.coverImage ? (
             <Image
-              src={book.coverImage}
+              src={toProxyUrl(book.coverImage) ?? book.coverImage}
               alt={`${book.title} 표지`}
               fill
               className="object-cover transition-transform duration-200 group-hover:scale-105"

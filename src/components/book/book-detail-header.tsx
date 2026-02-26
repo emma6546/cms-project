@@ -6,6 +6,7 @@ import { StarRating } from '@/components/book/star-rating'
 import { CategoryBadge } from '@/components/book/category-badge'
 import { Separator } from '@/components/ui/separator'
 import type { Book } from '@/lib/types'
+import { toProxyUrl } from '@/lib/notion/image-utils'
 
 interface BookDetailHeaderProps {
   book: Book
@@ -33,7 +34,7 @@ export function BookDetailHeader({ book }: BookDetailHeaderProps) {
             <div className="bg-muted relative h-64 w-44 overflow-hidden rounded-xl shadow-lg sm:h-80 sm:w-56">
               {book.coverImage ? (
                 <Image
-                  src={book.coverImage}
+                  src={toProxyUrl(book.coverImage) ?? book.coverImage}
                   alt={`${book.title} 표지`}
                   fill
                   className="object-cover"

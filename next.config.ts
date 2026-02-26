@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.notion.so',
+      },
+      {
+        protocol: 'https',
+        hostname: 'file.notion.so',
+      },
     ],
   },
   experimental: {

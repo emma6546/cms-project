@@ -5,6 +5,7 @@ import { ExternalLink, Quote, AlertCircle } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import type { NotionBlock, RichTextItem } from '@/lib/types'
 import { cn } from '@/lib/utils'
+import { toProxyUrl } from '@/lib/notion/image-utils'
 
 // Rich Text 배열에서 plain_text를 추출하여 단순 문자열로 반환
 function extractPlainText(richText?: RichTextItem[]): string {
@@ -118,11 +119,12 @@ function BlockRenderer({ block }: { block: NotionBlock }) {
     case 'image': {
       if (!block.image) return null
       const captionText = extractPlainText(block.image.caption)
+      const imageUrl = toProxyUrl(block.image.url) ?? block.image.url
       return (
         <figure className="my-6">
           <div className="bg-muted relative w-full overflow-hidden rounded-lg">
             <Image
-              src={block.image.url}
+              src={imageUrl}
               alt={captionText || '독서노트 이미지'}
               width={800}
               height={500}
