@@ -61,39 +61,38 @@ Notion CMS 기반 개인 독서 블로그 - 독서노트를 웹에 자동 발행
 
 ---
 
-### Phase 2: UI/UX 완성 (더미 데이터 활용)
+### Phase 2: UI/UX 완성 (더미 데이터 활용) ✅
 
 > 더미 데이터를 사용하여 모든 페이지의 UI를 완성합니다.
 > 이 Phase가 끝나면 실제 서비스와 동일한 화면이 더미 데이터로 동작합니다.
 
-#### P0 - Task 003: 공통 UI 컴포넌트 라이브러리 구현
+#### P0 - Task 003: 공통 UI 컴포넌트 라이브러리 구현 ✅
 
-- `src/components/book/book-card.tsx` 도서 카드 컴포넌트 (커버 이미지, 제목, 저자, 별점, 요약 문구) [F002]
-- `src/components/book/book-card-grid.tsx` 도서 카드 그리드 레이아웃 (반응형 그리드 배치) [F002]
-- `src/components/book/star-rating.tsx` 별점 표시 컴포넌트 (1~5점 별 아이콘 렌더링)
-- `src/components/book/category-badge.tsx` 카테고리 배지 컴포넌트 (장르 태그 표시)
-- `src/components/book/book-card-skeleton.tsx` 도서 카드 스켈레톤 로딩 UI
-- shadcn/ui 필수 컴포넌트 추가 설치 확인 (Tabs, Select, Card, Badge, Input, Skeleton)
+- ✅ `src/components/book/book-card.tsx` 도서 카드 컴포넌트 (커버 이미지, 제목, 저자, 별점, 요약 문구) [F002]
+- ✅ `src/components/book/book-card-grid.tsx` 도서 카드 그리드 레이아웃 (반응형 그리드 배치) [F002]
+- ✅ `src/components/book/star-rating.tsx` 별점 표시 컴포넌트 (1~5점 별 아이콘 렌더링)
+- ✅ `src/components/book/category-badge.tsx` 카테고리 배지 컴포넌트 (장르 태그 표시)
+- ✅ `src/components/book/book-card-skeleton.tsx` 도서 카드 스켈레톤 로딩 UI
+- ✅ shadcn/ui 필수 컴포넌트 추가 설치 확인 (Tabs, Select, Card, Badge, Input, Skeleton)
 
-#### P0 - Task 004: 메인 페이지 UI 완성 (더미 데이터)
+#### P0 - Task 004: 메인 페이지 UI 완성 (더미 데이터) ✅
 
-- `src/components/sections/hero-section.tsx` Hero 섹션 (서비스 소개 문구 + 키워드 검색 바 UI) [F004]
-- `src/components/sections/filter-section.tsx` 필터 섹션 (장르 Tabs 필터 + 별점 Select 박스 UI) [F003]
-- `src/components/sections/book-list-section.tsx` 도서 목록 섹션 (BookCardGrid 통합 + 결과 없음 안내)
-- `src/app/page.tsx` 메인 페이지에 Hero/Filter/BookList 섹션 통합 (더미 데이터 사용) [F001, F002]
-- 클라이언트 사이드 키워드 검색 필터링 로직 구현 (제목, 저자명 기준) [F004]
-- 장르(Category) 탭 필터 및 별점(Rating) 셀렉트 박스 필터링 로직 구현 [F003]
-- 반응형 레이아웃 적용 (모바일/태블릿/데스크톱)
+- ✅ `src/components/sections/hero-section.tsx` Hero 섹션 (서비스 소개 문구 + 키워드 검색 바 UI) [F004]
+- ✅ `src/components/sections/filter-section.tsx` 필터 섹션 (장르 Tabs 필터 + 별점 Select 박스 UI) [F003]
+- ✅ `src/components/sections/book-list-section.tsx` 도서 목록 섹션 (BookCardGrid 통합 + 결과 없음 안내)
+- ✅ `src/app/page.tsx` 메인 페이지에 Hero/Filter/BookList 섹션 통합 (더미 데이터 사용) [F001, F002]
+- ✅ 클라이언트 사이드 키워드 검색 필터링 로직 구현 (제목, 저자명 기준) [F004]
+- ✅ 장르(Category) 탭 필터 및 별점(Rating) 셀렉트 박스 필터링 로직 구현 [F003]
+- ✅ 반응형 레이아웃 적용 (모바일/태블릿/데스크톱)
 
-#### P0 - Task 005: 독서노트 상세 페이지 UI 완성 (더미 데이터)
+#### P0 - Task 005: 독서노트 상세 페이지 UI 완성 (더미 데이터) ✅
 
-- `src/components/book/book-detail-header.tsx` 도서 메타데이터 헤더 (제목, 저자, 카테고리, 별점, 발행일) [F006]
-- `src/components/book/book-content.tsx` 본문 영역 컴포넌트 (더미 텍스트, 이미지, 인용문 등 블록 타입별 스타일링) [F005]
-- `src/components/navigation/post-navigation.tsx` 이전/다음 글 네비게이션 버튼 컴포넌트 [F007]
-- `src/app/books/[id]/page.tsx` 상세 페이지에 헤더/본문/네비게이션 통합 (더미 데이터 사용) [F005, F006, F007]
-- 본문 블록 타입별 렌더링 컴포넌트 설계 (paragraph, heading, image, code, quote, bulleted_list, numbered_list)
-- `src/components/book/notion-block-renderer.tsx` Notion 블록 렌더러 컴포넌트 (더미 블록 데이터 기반 UI) [F005]
-- 반응형 레이아웃 적용 (모바일/데스크톱 본문 가독성 최적화)
+- ✅ `src/components/book/book-detail-header.tsx` 도서 메타데이터 헤더 (제목, 저자, 카테고리, 별점, 발행일) [F006]
+- ✅ `src/components/navigation/post-navigation.tsx` 이전/다음 글 네비게이션 버튼 컴포넌트 [F007]
+- ✅ `src/app/books/[id]/page.tsx` 상세 페이지에 헤더/본문/네비게이션 통합 (더미 데이터 사용) [F005, F006, F007]
+- ✅ 본문 블록 타입별 렌더링 컴포넌트 설계 (paragraph, heading, image, code, quote, bulleted_list, numbered_list)
+- ✅ `src/components/book/notion-block-renderer.tsx` Notion 블록 렌더러 컴포넌트 (더미 블록 데이터 기반 UI) [F005]
+- ✅ 반응형 레이아웃 적용 (모바일/데스크톱 본문 가독성 최적화)
 
 ---
 
